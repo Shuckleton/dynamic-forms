@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Form Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .draggable {
+            cursor: pointer;
+        }
+
+        .selected {
+            border: 2px solid #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arial:wght@400;700&family=Inter:wght@400;700&family=Poppins:wght@400;700&display=swap">
+</head>
+<body class="font-sans p-4 flex">
+
+    <div id="toolbar" class="p-4 bg-gray-200 w-48">
+        <div class="draggable p-2 bg-gray-300 mb-2" draggable="true" data-type="text-input">Text Input</div>
+        <div class="draggable p-2 bg-gray-300 mb-2" draggable="true" data-type="checkbox">Checkbox</div>
+        <div class="draggable p-2 bg-gray-300 mb-2" draggable="true" data-type="textarea">Text Area</div>
+        <div class="draggable p-2 bg-gray-300 mb-2" draggable="true" data-type="text-label">Text Label</div>
+    </div>
+
+    <div id="form-area" class="border border-gray-300 p-4 bg-white flex-grow min-h-[300px] relative"
+         ondragover="allowDrop(event)" ondrop="drop(event)">
+    </div>
+
+    <div id="properties" class="p-4 bg-gray-200 w-64 ml-4">
+        <h3 class="text-lg font-semibold mb-4">Properties</h3>
+        <label for="component-name" class="block text-sm font-medium mb-1">Component Name:</label>
+        <input type="text" id="component-name" placeholder="Enter component name" class="block w-full p-2 border border-gray-300 rounded mb-4">
+        <label for="label-text" class="block text-sm font-medium mb-1">Label Text:</label>
+        <input type="text" id="label-text" placeholder="Enter label text" class="block w-full p-2 border border-gray-300 rounded mb-4">
+        <label for="label-color" class="block text-sm font-medium mb-1">Label Color:</label>
+        <input type="color" id="label-color" class="block w-full p-2 border border-gray-300 rounded mb-4">
+        <label for="font-size" class="block text-sm font-medium mb-1">Font Size:</label>
+        <input type="number" id="font-size" placeholder="Font Size (px)" class="block w-full p-2 border border-gray-300 rounded mb-4">
+        <label for="font-style" class="block text-sm font-medium mb-1">Font Style:</label>
+        <select id="font-style" class="block w-full p-2 border border-gray-300 rounded mb-4">
+            <option value="">Select Style</option>
+            <option value="normal">Normal</option>
+            <option value="italic">Italic</option>
+            <option value="oblique">Oblique</option>
+            <option value="bold">Bold</option>
+        </select>
+        <label for="font-family" class="block text-sm font-medium mb-1">Font Family:</label>
+        <select id="font-family" class="block w-full p-2 border border-gray-300 rounded mb-4">
+            <option value="Arial">Arial</option>
+            <option value="Inter">Inter</option>
+            <option value="Poppins">Poppins</option>
+        </select>
+        <label for="form-list" class="block text-sm font-medium mb-1">Saved Forms:</label>
+        <select id="form-list" class="block w-full p-2 border border-gray-300 rounded mb-4">
+            <!-- Options will be dynamically populated here -->
+        </select>
+        <button id="delete-btn" class="bg-red-500 text-white p-2 rounded mb-4">Delete</button>
+        <button id="save-btn" class="bg-green-500 text-white p-2 rounded mb-4">Save</button>
+        <button id="load-btn" class="bg-blue-500 text-white p-2 rounded">Load</button>
+    </div>
+
+    <script src="../static/scripts/drag-drop.js"></script>
+    <script src="../static/scripts/properties.js"></script>
+    <script src="../static/scripts/main.js"></script>
+
+</body>
+</html>
